@@ -42,7 +42,6 @@
 					<input type="text" class="form-control"
 					id="email" >
 				</div>
-				
 				<div class="form-group">
 					<label for="exampleFormControlInput3">
 						Enter Post Title
@@ -51,10 +50,8 @@
 					<input type="text" class="form-control"
 					id="title" >
 				</div>
-				
-				
 				<div class="form-group">
-					<label for="exampleFormControlInput3">
+					<label for="exampleFormControlInput4">
 						Content
 					</label>
 					
@@ -100,9 +97,11 @@
 			// Get values
 			var name = getInputVal('name');
 			var email = getInputVal('email');
+			var title = getInputVal('title');
             var content = getInputVal('content');
+			
 
-			saveMessage(name, email,content);
+			saveMessage(name, email,title,content);
 			document.getElementById('contactForm').reset();
 		}
 
@@ -112,11 +111,12 @@
 		}
 
 		// Save message to firebase
-		function saveMessage(name, email,content) {
+		function saveMessage(name, email,title,content) {
 			var newMessageRef = messagesRef.push();
 			newMessageRef.set({
 				name: name,
 				email: email,
+				title: title,
                 content: content
 			});
 		}
